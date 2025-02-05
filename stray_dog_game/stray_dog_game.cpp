@@ -579,19 +579,60 @@ void adventure(string& dog_name, int& dog_level, int& dog_hp, int& dog_atk, int&
 
             }
             else if (_type == 2) {
-                cout << endl << dog_name << "은(는) " << _name << "을(를) 물었다." << endl;
+                cout << endl << dog_name << "은(는) " << skill_name << " 을(를) 사용했다..!" << endl;
                 cin.get();
-                cout << _name << "을(를) 먹었다." << endl;
-                cin.get();
-                cout << dog_name << "의 HP가 줄었다." << endl;
-                cout << dog_name << "의 매력이 줄었다." << endl;
-                dog_charm -= 5;
-                dog_hp -= _def;
-                cin.get();
-                return;
+                switch(enemy_do) {
+                case 0:
+                    cout << endl << _name << "은(는) 피하면서 한 입 물었다." << endl;
+                    cout << dog_name << "의 HP가 줄었다." << endl;
+                    dog_hp -= _atk;
+                    cout << "주인이 " << _name << "을 데리고 도망쳤다." << endl;
+                    dog_exp += _exp;
+                    return;
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                    cout << endl << _name << "은(는) 피했다..!" << endl;
+                    cout << "주인이 " << _name << "을 데리고 도망쳤다." << endl;
+                    dog_exp += _exp;
+                    return;
+                    break;
 
+                }
+
+                /*cout << _name << "의 HP가 줄었다." << endl;
+                _hp -= dog_atk;*/
+
+                cin.get();
+                break;
             }
+            else if (_type == 3) {
+                cout << endl << dog_name << "은(는) " << skill_name << " 을(를) 사용했다..!" << endl;
+                cin.get();
+                if (enemy_do == 2) {
+                    cout << endl << _name << "은(는) 피했다..!" << endl;
+                    break;
+                }
+                cout << _name << "의 HP가 줄었다." << endl;
+                _hp -= dog_atk;
 
+                cin.get();
+                break;
+            }
+            else if (_type == 4) {
+                cout << endl << dog_name << "은(는) " << skill_name << " 을(를) 사용했다..!" << endl;
+                cin.get();
+                if (enemy_do == 2) {
+                    cout << endl << _name << "은(는) 피했다..!" << endl;
+                    break;
+                }
+                cout << _name << "의 HP가 줄었다." << endl;
+                _hp -= dog_atk;
+
+                cin.get();
+                break;
+            }
         case 3:
             cout << endl << dog_name << "은(는) " << _name << "의 공격을 피하기로 결정했다." << endl;
             
